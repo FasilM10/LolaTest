@@ -1,0 +1,42 @@
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "idNumber": "208496638",
+    "email": "john.doe@example.com",
+    "phone": "0502659178",
+    "validOTP": true,
+    "businessName": "Sample Business",
+    "numOfEmployees": "5",
+    "businessDescription": "Sample business description",
+    "city": "תל אביב",
+    "street": "יד חרוצים",
+    "houseNum": "15",
+    "entrance": "1",
+    "floor": "2",
+    "zip": "1234567",
+    "poBox": "67",
+    "bussinesType":"עסק חדש",
+    "owners": [
+      {
+        "firstName": "Owner1FirstName",
+        "lastName": "Owner1LastName",
+        "idNumber": "208496638",
+        "city": "תל אביב",
+        "street": "יד חרוצים",
+        "houseNum": "16",
+        "entrance": "2",
+        "size":"10",
+        "access":"קרקע",
+        "storeNum":"101",
+        "category":"חקלאות",
+        "subCategory":"בית שחיטה",
+        "floor": "3",
+        "poBox": "67",
+        "zip": "5432167",
+        "phone": "0505659178",
+        "mobile": "0505659178",
+        "email": "owner1@example.com"
+      }
+    ]
+  }
+  
