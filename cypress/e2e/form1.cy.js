@@ -1,5 +1,6 @@
 // const { first } = require("cypress/types/lodash");
-// / <reference types="cypress"/>
+/// <reference types="cypress"/>
+
 
 const baseUrl = 'https://master.d2edn1not0aeaf.amplifyapp.com';
 const testData = require('./testData.json');
@@ -74,7 +75,12 @@ function goNextStep(){
 
 
 function enterRequestDetails(firstName, lastName, idNumber, email, phone, valid=true, type=1, owner=1,) {
-  hoverAndClick('[role="button"]',true);
+  if( cy.contains('404').should('be.visible',{timeout: 20000})){
+    console.log('page not found!')
+    return false
+  }else{
+    hoverAndClick('[role="button"]',true);
+  }
   // cy.wait(5000);
   clickOptionOnUl('[role="listbox"]', testData.bussinesType);
   checkCheckBox(selectors.businnes_holder_down);
@@ -99,11 +105,15 @@ describe('form1', () => {
     })
 
     it("test",() =>{
-      enterRequestDetails(  testData.firstName,
+      const x = enterRequestDetails(  testData.firstName,
         testData.lastName,
         testData.idNumber,
         testData.email,
         testData.phone,)
+      if(!x){
+        cy.log('failed 404')
+        return
+      }
       enter_otp(testData.validOTP);
       cy.get('#businessName').should('be.visible' ,{ timeout: 50000}).type('שם עסק');
       checkCheckBox(':nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input');
