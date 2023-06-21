@@ -37,6 +37,30 @@
         "mobile": "0505659178",
         "email": "owner1@example.com"
       }
-    ]
+    ],
+    "selectors":{"generalSelectors":{
+        "nextButton":".steps > :nth-child(2)",
+        "ulsSelector":"[role='listbox']"
+    },
+    "firstPageSelectors":{
+        "application_type":".MuiInputBase-root > #requestTypeId",
+        "businnes_holder_up":":nth-child(2) > .MuiFormGroup-root > :nth-child(1) > .MuiButtonBase-root > .PrivateSwitchBase-input",
+        "businnes_holder_down":":nth-child(2) > .MuiFormGroup-root > :nth-child(1) > .MuiButtonBase-root > .PrivateSwitchBase-input",
+        "applicant_up":":nth-child(2) > .row > :nth-child(3) > .MuiFormGroup-root > :nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input",
+        "applicant_down":":nth-child(2) > .row > :nth-child(3) > .MuiFormGroup-root > :nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input",
+        "first_name":"#firstName",
+        "last_name":"#lastName",
+        "identification_means_id":"cy.get(':nth-child(4) > :nth-child(1) > :nth-child(3) > .MuiFormGroup-root > :nth-child(1) > .MuiButtonBase-root > .PrivateSwitchBase-input')",
+        "identification_means_passport":"cy.get(':nth-child(4) > :nth-child(1) > :nth-child(3) > .MuiFormGroup-root > :nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input')",
+        "identification_means_b":":nth-child(3) > .MuiButtonBase-root > .PrivateSwitchBase-input",
+        "identification_number":"#identityNum",
+        "recognitionTypeId":"[name='recognitionTypeId']",
+        "email":"#email",
+        "mobile":"#mobile",
+        "otp_btn":".with-btn",
+        "conteiner":".sc-hKMtZM > .container"
+        },
+        "seconedPageSelectors":{}
+    }
   }
   

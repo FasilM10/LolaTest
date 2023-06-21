@@ -5,25 +5,27 @@
 const baseUrl = 'https://master.d2edn1not0aeaf.amplifyapp.com';
 const testData = require('./testData.json');
 const ownerData = testData.owners[0];
-const selectors = {
-  "application_type":".MuiInputBase-root > #requestTypeId",
-  "businnes_holder_up":":nth-child(2) > .MuiFormGroup-root > :nth-child(1) > .MuiButtonBase-root > .PrivateSwitchBase-input",
-  "businnes_holder_down":":nth-child(2) > .MuiFormGroup-root > :nth-child(1) > .MuiButtonBase-root > .PrivateSwitchBase-input",
-  "applicant_up":":nth-child(2) > .row > :nth-child(3) > .MuiFormGroup-root > :nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input",
-  "applicant_down":":nth-child(2) > .row > :nth-child(3) > .MuiFormGroup-root > :nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input",
-  "first_name":"#firstName",
-  "last_name":"#lastName",
-  "identification_means_id":"cy.get(':nth-child(4) > :nth-child(1) > :nth-child(3) > .MuiFormGroup-root > :nth-child(1) > .MuiButtonBase-root > .PrivateSwitchBase-input')",
-  "identification_means_passport":"cy.get(':nth-child(4) > :nth-child(1) > :nth-child(3) > .MuiFormGroup-root > :nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input')",
-  "identification_means_b":":nth-child(3) > .MuiButtonBase-root > .PrivateSwitchBase-input",
-  "identification_number":"#identityNum",
-  "email":"#email",
-  "mobile":"#mobile",
-  "otp_btn":".with-btn",
-  "online_application":'[href="/business-licensing/999"]',
-  "conteiner":".sc-hKMtZM > .container"
-};
+const firstPageSelectors = testData.selectors.firstPageSelectors;
+const seconedPageSelectors = testData.selectors.seconedPageSelectors;
+const generalSelectors = testData.selectors.generalSelectors;
 
+
+
+
+function enterRequestDetails(firstName, lastName, idNumber, email, phone, valid=true, type=1, owner=1,) {
+  hoverAndClick(generalSelectors.ulsSelector,true);
+  // cy.wait(5000);
+  clickOptionOnUl(generalSelectors.ulsSelector, testData.bussinesType);
+  checkCheckBox(firstPageSelectors.businnes_holder_down);
+  checkCheckBox(firstPageSelectors.applicant_up)
+  cy.get(firstPageSelectors.first_name).type(firstName);
+  cy.get(firstPageSelectors.last_name).type(lastName);
+  checkCheckBox('[name="recognitionTypeId"]',true);
+  cy.get(firstPageSelectors.identification_number).type(idNumber);
+  cy.get(firstPageSelectors.email).type(email);
+  cy.get(firstPageSelectors.mobile).type(phone);
+  cy.get(firstPageSelectors.otp_btn).click('left');
+}
 
 function enter_otp(valid=true) {
   cy.wait(3500);
@@ -69,30 +71,11 @@ function clickOptionOnUl(ulselector,option,cssfix=false) {
 }
 
 function goNextStep(){
-  cy.get('.steps > :nth-child(2)').click();
-  cy.wait(3000);
+  let a = cy.document()
+  cy.get(generalSelectors.nextButton).click();
+  cy.window().then((win)=>{cy.document({timeout:15000}) != a});
 }
 
-
-function enterRequestDetails(firstName, lastName, idNumber, email, phone, valid=true, type=1, owner=1,) {
-  if( cy.contains('404').should('be.visible',{timeout: 20000})){
-    console.log('page not found!')
-    return false
-  }else{
-    hoverAndClick('[role="button"]',true);
-  }
-  // cy.wait(5000);
-  clickOptionOnUl('[role="listbox"]', testData.bussinesType);
-  checkCheckBox(selectors.businnes_holder_down);
-  checkCheckBox(selectors.applicant_up)
-  cy.get(selectors.first_name).type(firstName);
-  cy.get(selectors.last_name).type(lastName);
-  checkCheckBox('[name="recognitionTypeId"]',true);
-  cy.get(selectors.identification_number).type(idNumber);
-  cy.get(selectors.email).type(email);
-  cy.get(selectors.mobile).type(phone);
-  cy.get(selectors.otp_btn).click('left');
-}
 
 
 describe('form1', () => {
@@ -105,15 +88,11 @@ describe('form1', () => {
     })
 
     it("test",() =>{
-      const x = enterRequestDetails(  testData.firstName,
+      enterRequestDetails(  testData.firstName,
         testData.lastName,
         testData.idNumber,
         testData.email,
         testData.phone,)
-      if(!x){
-        cy.log('failed 404')
-        return
-      }
       enter_otp(testData.validOTP);
       cy.get('#businessName').should('be.visible' ,{ timeout: 50000}).type('שם עסק');
       checkCheckBox(':nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input');
