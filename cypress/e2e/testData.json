@@ -40,7 +40,11 @@
     ],
     "selectors":{"generalSelectors":{
         "nextButton":".steps > :nth-child(2)",
-        "ulsSelector":"[role='listbox']"
+        "ulsSelector":"[role='listbox']",
+        "errorSelectors":{
+            "wrongPhone":"מס׳ טלפון שגוי",
+            "wrongId":"מס׳ מזהה שגוי"
+        }
     },
     "firstPageSelectors":{
         "application_type":".MuiInputBase-root > #requestTypeId",
@@ -60,15 +64,25 @@
         "otp_btn":".with-btn",
         "conteiner":".sc-hKMtZM > .container",
         "firstButton":"[role='button']",
-        "errorSelector":{
-            "typeApplication":"חובה להזין סוג בקשה"
+        "errorSelectors":{
+            "typeApplication":"חובה להזין סוג בקשה",
+            "firstName":"חובה להזין שם פרטי",
+            "lastName":"חובה להזין דוא״ל",
+            "identificationNumber":"חובה להזין מס׳ מזהה",
+            "email":"חובה להזין דוא״ל",
+            "phone":"חובה להזין טלפון נייד"
         }
         },
         "seconedPageSelectors":{
             "businessNameField":"#businessName",
             "checkBoxBussines":":nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input",
             "bussinessNumberOfEmployeesField":"#numOfEmployees",
-            "businessDescriptionField":".MuiInputBase-root > #businessDescription"
+            "businessDescriptionField":".MuiInputBase-root > #businessDescription",
+            "errorSelectors":{
+                "bussinesName":"חובה להזין שם עסק",
+                "employeesNumber":"מספר העובדים חייב להיות גדול מ-1",
+                "description":"חובה להזין תיאור לעסק"
+            }
         },
         "thiredPageSelector":{
             "cityDropDown":"#cityId",
@@ -83,13 +97,26 @@
             "emailField":"#email",
             "bussinessSizeField":"#businessSize",
             "accessToBusinessDropdown":"#accessToBusiness",
-            "storeNumField":"#storeNum"
+            "storeNumField":"#storeNum",
+            "errorSelectors":{
+                "city":"חובה להזין ישוב",
+                "street":"חובה להזין רחוב",
+                "housenum":"חובה להזין מס׳ בית",
+                "phone":"חובה להזין טלפון נייד",
+                "bussinesSize":"גודל העסק חייב להיות גדול מ- 1",
+                "email":"חובה להזין דוא״ל"
+            }
 
         },
         "fourthPageSelector":{
             "businessCategoryDropdown":"#vocations\\[0\\]\\.businessCategory",
             "itemDetailsDropdown":"#vocations\\[0\\]\\.itemDetails",
-            "descriptionField":"#vocations\\[0\\]\\.description"
+            "descriptionField":"#vocations\\[0\\]\\.description",
+            "errorSelectors":{
+                "bussinesCategory":"חובה להזין קטגורית עסקים",
+                "bussinesSubCategory":"חובה להזין קטגוריית משנה",
+                "description":"חובה להזין תיאור"
+            }
         },
         "fifthPageSelectors":{
             "firstNameField":"#owners\\[0\\]\\.firstName",
@@ -103,7 +130,17 @@
             "zipField":"#owners\\[0\\]\\.address\\.zip",
             "phoneField":"#owners\\[0\\]\\.address\\.phone",
             "mobileField":"#owners\\[0\\]\\.address\\.mobile",
-            "emailField":"#owners\\[0\\]\\.address\\.email"
+            "emailField":"#owners\\[0\\]\\.address\\.email",
+            "errorSelectors":{
+                "firstName":"חובה להזין שם פרטי",
+                "lastName":"חובה להזין שם משפחה",
+                "identificationNumber":"חובה להזין מס׳ מזהה",
+                "city":"חובה להזין ישוב",
+                "street":"חובה להזין רחוב",
+                "housenum":"חובה להזין מס׳ בית",
+                "phone":"חובה להזין טלפון נייד",
+                "email":"חובה להזין דוא״ל"
+            }
         },
         "sixthPageSelectors":{
             "downloadButton":":nth-child(1) > .sc-ftvSup > .actions > .MuiButtonBase-root",
