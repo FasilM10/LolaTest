@@ -4,6 +4,7 @@
 
 const baseUrl = 'https://master.d2edn1not0aeaf.amplifyapp.com';
 const testData = require('./testData.json');
+const testMethods = require('./functions.js');
 const ownerData = testData.owners[0];
 const firstPageSelectors = testData.selectors.firstPageSelectors;
 const seconedPageSelectors = testData.selectors.seconedPageSelectors;
@@ -12,20 +13,6 @@ const generalSelectors = testData.selectors.generalSelectors;
 
 
 
-function enterRequestDetails(firstName, lastName, idNumber, email, phone, valid=true, type=1, owner=1,) {
-  hoverAndClick(generalSelectors.ulsSelector,true);
-  // cy.wait(5000);
-  clickOptionOnUl(generalSelectors.ulsSelector, testData.bussinesType);
-  checkCheckBox(firstPageSelectors.businnes_holder_down);
-  checkCheckBox(firstPageSelectors.applicant_up)
-  cy.get(firstPageSelectors.first_name).type(firstName);
-  cy.get(firstPageSelectors.last_name).type(lastName);
-  checkCheckBox('[name="recognitionTypeId"]',true);
-  cy.get(firstPageSelectors.identification_number).type(idNumber);
-  cy.get(firstPageSelectors.email).type(email);
-  cy.get(firstPageSelectors.mobile).type(phone);
-  cy.get(firstPageSelectors.otp_btn).click('left');
-}
 
 function enter_otp(valid=true) {
   cy.wait(3500);
@@ -44,7 +31,7 @@ function enter_otp(valid=true) {
 }
 
 function hoverAndClick(selector,first=false) {
-  cy.wait(3000);
+  cy.wait(7000);
   if(first){
     let elem = cy.get(`${selector}`).first().should('be.visible',{ timeout: 50000 }).trigger('mouseover').as('button').click({force:true});
   }else{
@@ -88,11 +75,11 @@ describe('form1', () => {
     })
 
     it("test",() =>{
-      enterRequestDetails(  testData.firstName,
+      testMethods.enterRequestDetails(  testData.firstName,
         testData.lastName,
         testData.idNumber,
         testData.email,
-        testData.phone,)
+        testData.phone)
       enter_otp(testData.validOTP);
       cy.get('#businessName').should('be.visible' ,{ timeout: 50000}).type('שם עסק');
       checkCheckBox(':nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input');

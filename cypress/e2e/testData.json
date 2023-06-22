@@ -58,9 +58,15 @@
         "email":"#email",
         "mobile":"#mobile",
         "otp_btn":".with-btn",
-        "conteiner":".sc-hKMtZM > .container"
+        "conteiner":".sc-hKMtZM > .container",
+        "firstButton":"[role='button']"
         },
-        "seconedPageSelectors":{}
+        "seconedPageSelectors":{
+            "businessNameField":"#businessName",
+            "checkBoxBussines":":nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input",
+            "bussinessSizeField":"#numOfEmployees",
+            "businessDescriptionField":".MuiInputBase-root > #businessDescription"
+        }
     }
   }
   
