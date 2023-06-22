@@ -64,8 +64,47 @@
         "seconedPageSelectors":{
             "businessNameField":"#businessName",
             "checkBoxBussines":":nth-child(2) > .MuiButtonBase-root > .PrivateSwitchBase-input",
-            "bussinessSizeField":"#numOfEmployees",
+            "bussinessNumberOfEmployeesField":"#numOfEmployees",
             "businessDescriptionField":".MuiInputBase-root > #businessDescription"
+        },
+        "thiredPageSelector":{
+            "cityDropDown":"#cityId",
+            "streetDropDown":"#streetId",
+            "houseNumField":"#houseNum",
+            "entranceField":"#entrance",
+            "floorField":"#floor",
+            "zipField":"#zip",
+            "poBoxField":"#poBox",
+            "phoneField":"#phone",
+            "mobileField":"#mobile",
+            "emailField":"#email",
+            "bussinessSizeField":"#businessSize",
+            "accessToBusinessDropdown":"#accessToBusiness",
+            "storeNumField":"#storeNum"
+
+        },
+        "fourthPageSelector":{
+            "businessCategoryDropdown":"#vocations\\[0\\]\\.businessCategory",
+            "itemDetailsDropdown":"#vocations\\[0\\]\\.itemDetails",
+            "descriptionField":"#vocations\\[0\\]\\.description"
+        },
+        "fifthPageSelectors":{
+            "firstNameField":"#owners\\[0\\]\\.firstName",
+            "lastNameField":"#owners\\[0\\]\\.lastName",
+            "ownerIdNumberField":"#owners\\[0\\]\\.identityNum",
+            "cityDropdown":"#owners\\[0\\]\\.address\\.cityId",
+            "streetDropdown":"#owners\\[0\\]\\.address\\.streetId",
+            "houseNumField":"#owners\\[0\\]\\.address\\.houseNum",
+            "entranceField":"#owners\\[0\\]\\.address\\.entrance",
+            "floorField":"#owners\\[0\\]\\.address\\.floor",
+            "zipField":"#owners\\[0\\]\\.address\\.zip",
+            "phoneField":"#owners\\[0\\]\\.address\\.phone",
+            "mobileField":"#owners\\[0\\]\\.address\\.mobile",
+            "emailField":"#owners\\[0\\]\\.address\\.email"
+        },
+        "sixthPageSelectors":{
+            "downloadButton":":nth-child(1) > .sc-ftvSup > .actions > .MuiButtonBase-root",
+            "submitButton":".submit"
         }
     }
   }

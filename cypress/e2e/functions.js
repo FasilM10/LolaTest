@@ -5,7 +5,10 @@ const ownerData = testData.owners[0];
 const firstPageSelectors = testData.selectors.firstPageSelectors;
 const seconedPageSelectors = testData.selectors.seconedPageSelectors;
 const generalSelectors = testData.selectors.generalSelectors;
-
+const thiredPageSelectors = testData.selectors.thiredPageSelector;
+const fourthPageSelectors = testData.selectors.fourthPageSelector;
+const fifthPageSelectors = testData.selectors.fifthPageSelectors;
+const sixthPageSelectors = testData.selectors.sixthPageSelectors;
 
 
 function enter_otp(valid=true) {
@@ -45,6 +48,7 @@ function enter_otp(valid=true) {
   }
   
   function clickOptionOnUl(ulselector,option,cssfix=false) {
+    cy.wait(2500);
     if(cssfix){
     let elem = cy.get(`${ulselector}`).scrollIntoView().contains('li', `${option}`).scrollIntoView().click(); 
     }else{
@@ -59,46 +63,83 @@ function enter_otp(valid=true) {
   }
   
   
-  export function enterRequestDetails(firstName, lastName, idNumber, email, phone, valid=true, type=1, owner=1,) {
+  export function enterRequestDetails() {
     hoverAndClick([firstPageSelectors.firstButton],true);
     // cy.wait(5000);
     clickOptionOnUl(generalSelectors.ulsSelector, testData.bussinesType);
     checkCheckBox(firstPageSelectors.businnes_holder_down);
     checkCheckBox(firstPageSelectors.applicant_up)
-    cy.get(firstPageSelectors.first_name).type(firstName);
-    cy.get(firstPageSelectors.last_name).type(lastName);
+    cy.get(firstPageSelectors.first_name).type(testData.firstName);
+    cy.get(firstPageSelectors.last_name).type(testData.lastName);
     checkCheckBox(firstPageSelectors.recognitionTypeId,true);
-    cy.get(firstPageSelectors.identification_number).type(idNumber);
-    cy.get(firstPageSelectors.email).type(email);
-    cy.get(firstPageSelectors.mobile).type(phone);
+    cy.get(firstPageSelectors.identification_number).type(testData.idNumber);
+    cy.get(firstPageSelectors.email).type(testData.email);
+    cy.get(firstPageSelectors.mobile).type(testData.phone);
     cy.get(firstPageSelectors.otp_btn).click('left');
   }
   
 
-export function seconedPage(bussinesName,numberOfEmployees) {
-    cy.get(seconedPageSelectors.businessNameField).should('be.visible' ,{ timeout: 50000}).type(bussinesName);
+export function seconedPage() {
+    cy.get(seconedPageSelectors.businessNameField).should('be.visible' ,{ timeout: 50000}).type(testData.businessName);
     checkCheckBox(seconedPageSelectors.checkBoxBussines);
-    cy.get(seconedPageSelectors.bussinessSizeField).type(numberOfEmployees);
-    cy.get(seconedPageSelectors.businessDescriptionField).type('תיאור טסט');
-    cy.get('.steps > :nth-child(2)').click();
-    cy.wait(4000);
-    hoverAndClick('#cityId');
-    clickOptionOnUl('[role="listbox"]', ownerData.city,true);
-    cy.wait(3000);
-    hoverAndClick('#streetId');
-    clickOptionOnUl('[role="listbox"]', ownerData.street,true);
-    cy.get('#houseNum').type(ownerData.houseNum).should('have.value', ownerData.houseNum, { timeout: 50000 });
-    cy.get('#entrance').type(ownerData.entrance).should('have.value', ownerData.entrance, { timeout: 50000 });
-    cy.get('#floor').type(ownerData.floor).should('have.value', ownerData.floor, { timeout: 50000 });
-    cy.get('#zip').type(ownerData.zip).should('have.value', ownerData.zip, { timeout: 50000 });
-    cy.get('#poBox').type(ownerData.poBox).should('have.value', ownerData.poBox, { timeout: 50000 });
-    cy.get('#phone').type(ownerData.phone).should('have.value', ownerData.phone, { timeout: 50000 });
-    cy.get('#mobile').type(ownerData.phone).should('have.value', ownerData.phone, { timeout: 50000 });
-    cy.get('#email').type(ownerData.email).should('have.value', ownerData.email, { timeout: 50000 });
-    cy.get('#businessSize').type(ownerData.size).should('have.value', `0${ownerData.size}`, { timeout: 50000 });
-    hoverAndClick('#accessToBusiness');
-    cy.wait(500);
-    clickOptionOnUl('[role="listbox"]',ownerData.access);
-    cy.get('#storeNum').type(ownerData.storeNum).should('have.value', ownerData.storeNum, { timeout: 50000 });
+    cy.get(seconedPageSelectors.bussinessNumberOfEmployeesField).type(testData.numOfEmployees);
+    cy.get(seconedPageSelectors.businessDescriptionField).type(testData.businessDescription);
     goNextStep()
+    cy.wait(4000);
+}
+
+export function thiredPage() {
+    hoverAndClick(thiredPageSelectors.cityDropDown);
+    clickOptionOnUl(generalSelectors.ulsSelector, ownerData.city,true);
+    hoverAndClick(thiredPageSelectors.streetDropDown);
+    clickOptionOnUl(generalSelectors.ulsSelector, ownerData.street,true);
+    cy.get(thiredPageSelectors.houseNumField).type(ownerData.houseNum).should('have.value', ownerData.houseNum, { timeout: 50000 });
+    cy.get(thiredPageSelectors.entranceField).type(ownerData.entrance).should('have.value', ownerData.entrance, { timeout: 50000 });
+    cy.get(thiredPageSelectors.floorField).type(ownerData.floor).should('have.value', ownerData.floor, { timeout: 50000 });
+    cy.get(thiredPageSelectors.zipField).type(ownerData.zip).should('have.value', ownerData.zip, { timeout: 50000 });
+    cy.get(thiredPageSelectors.poBoxField).type(ownerData.poBox).should('have.value', ownerData.poBox, { timeout: 50000 });
+    cy.get(thiredPageSelectors.phoneField).type(ownerData.phone).should('have.value', ownerData.phone, { timeout: 50000 });
+    cy.get(thiredPageSelectors.mobileField).type(ownerData.phone).should('have.value', ownerData.phone, { timeout: 50000 });
+    cy.get(thiredPageSelectors.emailField).type(ownerData.email).should('have.value', ownerData.email, { timeout: 50000 });
+    cy.get(thiredPageSelectors.bussinessSizeField).type(ownerData.size).should('have.value', `0${ownerData.size}`, { timeout: 50000 });
+    hoverAndClick(thiredPageSelectors.accessToBusinessDropdown);
+    clickOptionOnUl(generalSelectors.ulsSelector,ownerData.access);
+    cy.get(thiredPageSelectors.storeNumField).type(ownerData.storeNum).should('have.value', ownerData.storeNum, { timeout: 50000 });
+    goNextStep()
+    
+}
+
+export function fourthPage() {
+    hoverAndClick(fourthPageSelectors.businessCategoryDropdown);
+    clickOptionOnUl(generalSelectors.ulsSelector,ownerData.category);
+    hoverAndClick(fourthPageSelectors.itemDetailsDropdown);
+    clickOptionOnUl(generalSelectors.ulsSelector,ownerData.subCategory);
+    cy.get(fourthPageSelectors.descriptionField).type('test').should('have.value', 'test', { timeout: 50000 });
+    goNextStep();
+}
+
+
+
+export function fifthPage(){
+    cy.get(fifthPageSelectors.firstNameField).type(ownerData.firstName).should('have.value', ownerData.firstName, { timeout: 50000 });
+    cy.get(fifthPageSelectors.lastNameField).type(ownerData.lastName).should('have.value', ownerData.lastName, { timeout: 50000 });
+    cy.get(fifthPageSelectors.ownerIdNumberField).type(ownerData.idNumber).should('have.value', ownerData.idNumber, { timeout: 50000 });
+    hoverAndClick(fifthPageSelectors.cityDropdown);
+    clickOptionOnUl(generalSelectors.ulsSelector,ownerData.city);
+    hoverAndClick(fifthPageSelectors.streetDropdown);
+    clickOptionOnUl(generalSelectors.ulsSelector,ownerData.street,true);
+    cy.get(fifthPageSelectors.houseNumField).type(ownerData.houseNum).should('have.value', ownerData.houseNum, { timeout: 50000 });
+    cy.get(fifthPageSelectors.entranceField).type(ownerData.entrance).should('have.value', ownerData.entrance, { timeout: 50000 });
+    cy.get(fifthPageSelectors.floorField).type(ownerData.floor).should('have.value', ownerData.floor, { timeout: 50000 });
+    cy.get(fifthPageSelectors.zipField).type(ownerData.zip).should('have.value', ownerData.zip, { timeout: 50000 });
+    cy.get(fifthPageSelectors.phoneField).type(ownerData.phone).should('have.value', ownerData.phone, { timeout: 50000 });
+    cy.get(fifthPageSelectors.mobileField).type(ownerData.phone).should('have.value', ownerData.phone, { timeout: 50000 });
+    cy.get(fifthPageSelectors.emailField).type(ownerData.email).should('have.value', ownerData.email, { timeout: 50000 });
+    goNextStep();
+}
+
+
+export function sixthPage() {
+    cy.get(sixthPageSelectors.downloadButton).click({force:true});
+    cy.get(sixthPageSelectors.submitButton).click();
 }
