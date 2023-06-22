@@ -59,7 +59,10 @@
         "mobile":"#mobile",
         "otp_btn":".with-btn",
         "conteiner":".sc-hKMtZM > .container",
-        "firstButton":"[role='button']"
+        "firstButton":"[role='button']",
+        "errorSelector":{
+            "typeApplication":"חובה להזין סוג בקשה"
+        }
         },
         "seconedPageSelectors":{
             "businessNameField":"#businessName",

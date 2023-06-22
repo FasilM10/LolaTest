@@ -76,6 +76,7 @@ function enter_otp(valid=true) {
     cy.get(firstPageSelectors.email).type(testData.email);
     cy.get(firstPageSelectors.mobile).type(testData.phone);
     cy.get(firstPageSelectors.otp_btn).click('left');
+    enter_otp(testData.validOTP);
   }
   
 
