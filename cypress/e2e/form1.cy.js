@@ -23,9 +23,14 @@ describe('form1', () => {
     it("test",() =>{
       testMethods.enterRequestDetails();
       testMethods.seconedPage();
+      cy.debug().log
+      cy.wait(1500);
       testMethods.thiredPage();
+      cy.wait(1500);
       testMethods.fourthPage();
+      cy.wait(1500);
       testMethods.fifthPage();
+      cy.wait(1500);
       testMethods.sixthPage();
   })
 

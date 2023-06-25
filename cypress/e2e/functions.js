@@ -29,13 +29,15 @@ function enter_otp(valid=true) {
   
   function hoverAndClick(selector,first=false) {
     if(first){
-        cy.wait(7000);
-        let elem = cy.get(`${selector}`).first().should('be.visible',{ timeout: 50000 }).trigger('mouseover').as('button').click({force:true});
+        cy.wait(2500);
+        let elem = cy.get(`${selector}`).first().should('be.visible',{ timeout: 10000 }).as('button').trigger('mouseover',{ timeout: 20000 }).click({force:true});
+        cy.get(generalSelectors.ulsSelector,{timeout:10000}).scrollIntoView().should('be.visible',{timeout:10000});
+        // cy.get('@button').trigger('mouseover').click();
     }else{
-        cy.wait(3500);
-        let elem = cy.get(`${selector}`).should('be.visible',{ timeout: 50000 }).trigger('mouseover').as('button').click({force:true});
+        // cy.wait(3500);
+        let elem = cy.get(`${selector}`).should('be.visible',{ timeout: 20000 }).as('button').trigger('mouseover').click({force:true});
+        cy.get(generalSelectors.ulsSelector,{timeout:10000}).as('ul');
     }
-    cy.wait(1500);
   }
   
   function checkCheckBox(selector, first=false) {
@@ -64,7 +66,9 @@ function enter_otp(valid=true) {
   
   
   export function enterRequestDetails() {
-    hoverAndClick([firstPageSelectors.firstButton],true);
+    cy.findAllByText('סוג הבקשה').first().should('be.visible');
+    cy.wait(8000);
+    hoverAndClick(firstPageSelectors.firstButton,true);
     // cy.wait(5000);
     clickOptionOnUl(generalSelectors.ulsSelector, testData.bussinesType);
     checkCheckBox(firstPageSelectors.businnes_holder_down);
@@ -86,12 +90,12 @@ export function seconedPage() {
     cy.get(seconedPageSelectors.bussinessNumberOfEmployeesField).type(testData.numOfEmployees);
     cy.get(seconedPageSelectors.businessDescriptionField).type(testData.businessDescription);
     goNextStep()
-    cy.wait(4000);
 }
 
 export function thiredPage() {
     hoverAndClick(thiredPageSelectors.cityDropDown);
     clickOptionOnUl(generalSelectors.ulsSelector, ownerData.city,true);
+    cy.wait(1900);
     hoverAndClick(thiredPageSelectors.streetDropDown);
     clickOptionOnUl(generalSelectors.ulsSelector, ownerData.street,true);
     cy.get(thiredPageSelectors.houseNumField).type(ownerData.houseNum).should('have.value', ownerData.houseNum, { timeout: 50000 });
@@ -127,6 +131,7 @@ export function fifthPage(){
     cy.get(fifthPageSelectors.ownerIdNumberField).type(ownerData.idNumber).should('have.value', ownerData.idNumber, { timeout: 50000 });
     hoverAndClick(fifthPageSelectors.cityDropdown);
     clickOptionOnUl(generalSelectors.ulsSelector,ownerData.city);
+    cy.wait(1900);
     hoverAndClick(fifthPageSelectors.streetDropdown);
     clickOptionOnUl(generalSelectors.ulsSelector,ownerData.street,true);
     cy.get(fifthPageSelectors.houseNumField).type(ownerData.houseNum).should('have.value', ownerData.houseNum, { timeout: 50000 });
@@ -141,6 +146,9 @@ export function fifthPage(){
 
 
 export function sixthPage() {
-    cy.get(sixthPageSelectors.downloadButton).click({force:true});
+    // cy.upload_file('Messi.jpg', 'image/jpg', '[aria-label="upload picture"]');
+    cy.get('[aria-label="upload picture"]').eq(0).attachFile
     cy.get(sixthPageSelectors.submitButton).click();
+    cy.wait(3000);
+    cy.screenshot();
 }

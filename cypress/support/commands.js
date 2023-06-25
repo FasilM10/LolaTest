@@ -24,3 +24,18 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import '@testing-library/cypress/add-commands'
+import 'cypress-file-upload';
+
+
+
+// Cypress.Commands.add('upload_file', (fileName, fileType = ' ', selector) => {
+// cy.get(selector).then(subject => {
+// cy.fixture(fileName, 'base64').then(content => {
+// const el = subject.eq('0');
+// const testFile = new File([content], fileName, { type: fileType });
+// const dataTransfer = new DataTransfer();
+// dataTransfer.items.add(testFile);
+// el.files = dataTransfer.files;
+// });
+// });
+// });
