@@ -2,13 +2,13 @@
 const baseUrl = 'https://master.d2edn1not0aeaf.amplifyapp.com';
 const testData = require('./testData.json');
 const ownerData = testData.owners[0];
-const firstPageSelectors = testData.selectors.firstPageSelectors;
-const seconedPageSelectors = testData.selectors.seconedPageSelectors;
-const generalSelectors = testData.selectors.generalSelectors;
-const thiredPageSelectors = testData.selectors.thiredPageSelector;
-const fourthPageSelectors = testData.selectors.fourthPageSelector;
-const fifthPageSelectors = testData.selectors.fifthPageSelectors;
-const sixthPageSelectors = testData.selectors.sixthPageSelectors;
+const firstPageSelectors = testData.firstFormSelectors.firstPageSelectors;
+const seconedPageSelectors = testData.firstFormSelectors.seconedPageSelectors;
+const generalSelectors = testData.generalSelectors;
+const thiredPageSelectors = testData.firstFormSelectors.thiredPageSelector;
+const fourthPageSelectors = testData.firstFormSelectors.fourthPageSelector;
+const fifthPageSelectors = testData.firstFormSelectors.fifthPageSelectors;
+const sixthPageSelectors = testData.firstFormSelectors.sixthPageSelectors;
 
 
 function enter_otp(valid=true) {
@@ -46,7 +46,6 @@ function enter_otp(valid=true) {
     }else{
       let elem = cy.get(`${selector}`).check().should('be.checked');
     }
-    
   }
   
   function clickOptionOnUl(ulselector,option,cssfix=false) {

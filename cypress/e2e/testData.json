@@ -1,51 +1,60 @@
-{
-    "firstName": "John",
-    "lastName": "Doe",
+{"pathConst":{
+            "baseUrl":"https://master.d2edn1not0aeaf.amplifyapp.com",
+            "firstFormPath":"/business-licensing/999"
+},
+"firstName": "John",
+"lastName": "Doe",
+"idNumber": "208496638",
+"email": "john.doe@example.com",
+"phone": "0502659178",
+"validOTP": true,
+"businessName": "Sample Business",
+"numOfEmployees": "5",
+"businessDescription": "Sample business description",
+"city": "תל אביב",
+"street": "יד חרוצים",
+"houseNum": "15",
+"entrance": "1",
+"floor": "2",
+"zip": "1234567",
+"poBox": "67",
+"bussinesType":"עסק חדש",
+"owners": [
+  {
+    "firstName": "Owner1FirstName",
+    "lastName": "Owner1LastName",
     "idNumber": "208496638",
-    "email": "john.doe@example.com",
-    "phone": "0502659178",
-    "validOTP": true,
-    "businessName": "Sample Business",
-    "numOfEmployees": "5",
-    "businessDescription": "Sample business description",
     "city": "תל אביב",
     "street": "יד חרוצים",
-    "houseNum": "15",
-    "entrance": "1",
-    "floor": "2",
-    "zip": "1234567",
+    "houseNum": "16",
+    "entrance": "2",
+    "size":"10",
+    "access":"קרקע",
+    "storeNum":"101",
+    "category":"חקלאות",
+    "subCategory":"בית שחיטה",
+    "floor": "3",
     "poBox": "67",
-    "bussinesType":"עסק חדש",
-    "owners": [
-      {
-        "firstName": "Owner1FirstName",
-        "lastName": "Owner1LastName",
-        "idNumber": "208496638",
-        "city": "תל אביב",
-        "street": "יד חרוצים",
-        "houseNum": "16",
-        "entrance": "2",
-        "size":"10",
-        "access":"קרקע",
-        "storeNum":"101",
-        "category":"חקלאות",
-        "subCategory":"בית שחיטה",
-        "floor": "3",
-        "poBox": "67",
-        "zip": "5432167",
-        "phone": "0505659178",
-        "mobile": "0505659178",
-        "email": "owner1@example.com"
-      }
-    ],
-    "selectors":{"generalSelectors":{
-        "nextButton":".steps > :nth-child(2)",
-        "ulsSelector":"[role='listbox']",
-        "errorSelectors":{
-            "wrongPhone":"מס׳ טלפון שגוי",
-            "wrongId":"מס׳ מזהה שגוי"
-        }
-    },
+    "zip": "5432167",
+    "phone": "0505659178",
+    "mobile": "0505659178",
+    "email": "owner1@example.com"
+  }
+],
+
+"generalSelectors":{
+    "nextButton":".steps > :nth-child(2)",
+    "ulsSelector":"[role='listbox']",
+    "errorSelectors":{
+        "wrongPhone":"מס׳ טלפון שגוי",
+        "wrongId":"מס׳ מזהה שגוי",
+        "firstName":"חובה להזין שם פרטי",
+        "emailError":"חובה להזין דוא״ל",
+        "identificationNumber":"חובה להזין מס׳ מזהה",
+        "phoneError":"חובה להזין טלפון נייד"
+    }
+},
+"firstFormSelectors":{
     "firstPageSelectors":{
         "application_type":".MuiInputBase-root > #requestTypeId",
         "businnes_holder_up":":nth-child(2) > .MuiFormGroup-root > :nth-child(1) > .MuiButtonBase-root > .PrivateSwitchBase-input",
@@ -65,13 +74,8 @@
         "conteiner":".sc-hKMtZM > .container",
         "firstButton":"[role='button']",
         "errorSelectors":{
-            "typeApplication":"חובה להזין סוג בקשה",
-            "firstName":"חובה להזין שם פרטי",
-            "lastName":"חובה להזין דוא״ל",
-            "identificationNumber":"חובה להזין מס׳ מזהה",
-            "email":"חובה להזין דוא״ל",
-            "phone":"חובה להזין טלפון נייד"
-        }
+            "typeApplication":"חובה להזין סוג בקשה"
+            }
         },
         "seconedPageSelectors":{
             "businessNameField":"#businessName",
@@ -146,6 +150,8 @@
             "downloadButton":":nth-child(1) > .sc-ftvSup > .actions > .MuiButtonBase-root",
             "submitButton":".submit"
         }
+    
+
+
     }
-  }
-  
+}
